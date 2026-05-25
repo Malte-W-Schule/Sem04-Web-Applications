@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Homepage</title>
+        <meta name="description" content="Das ist die Homepage">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <header>
+            <h1 id="Top">Homepage</h1>
+            <picture>
+                <source media="(min-width: 1920px)" srcset="header1920x200.png">
+                <source media="(min-width: 1280px)" srcset="header1280x133.png">
+                <source media="(min-width: 640px)" srcset="header640x67.png">
+                <img src="header320x34.png" alt="Browser kann Bild nicht verwenden!">
+            </picture>
+            <nav>
+                <a href="Startpage.html">
+                    <picture>
+                        <img src="startpageIcon.png" alt="Bild konnte nicht gefunden werden!">
+                    </picture>
+                </a>
+                <a href="ProjectOverview.html">Projekte</a>
+                <a href="CreateProject.html">Neues Projekt</a>
+            </nav>
+        </header>
+        <section>
+            <!--Hier Code für die Seite-->
+            <form>
+                <ul>
+                    <li>Titel: <input type="text" name="Titel"></li>
+                    <li>Startdatum: <input type="date" name="Startdatum"></li>  
+                    <li>Enddatum: <input type="date" name="Enddatum"></li>
+                    <li>Kurzbeschreibung: <input type="text" name="Kurzbeschreibung"></li>
+                    <li>Langbeschreibung: <input type="text" name="Langbeschreibung"></li>
+                    <li>Projekt Ziel 1: <input type="text" name="Ziel1"></li>
+                    <li>Projekt Ziel 2: <input type="text" name="Ziel2"></li>
+                    <li>Logo: <input type="file" name="Logo"></li>
+                </ul>
+            </form>
+        </section>
+        <footer>
+            <section>
+                Login:
+                <form action="Login.html" method="post">
+                    <input type="text" name="Name">
+                    <input type="password" name="Passwort">
+                </form>
+            </section>
+            <nav>
+                <a href="register.html">Neu registrieren</a>
+            </nav>
+            <section>
+                Impressum
+                Datenschutzerklärung
+                Haftungsausschluss
+                Copyright
+                Kontaktinformationen
+            </section>
+            <nav>
+                <a href="#top">züruck nach oben</a>
+            </nav>
+        </footer>
+    </body>
+</html>
