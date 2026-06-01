@@ -72,7 +72,40 @@ body {
     margin-top: 100px;
 }
 
-#nav-menu, a {
-    color: pink;
-    text-decoration: none;
+#nav-menu a {
+
+    padding: 10px 15px; 
+    color: white;       
+    text-decoration: none; 
+    
+    font-size: 150%;       
+    font-weight: bold;  
+}
+
+#nav-menu a:hover {
+    background-color: #87CEFA; 
+    color: black;              
+}
+
+#nav-menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* === === FOOTER === === */
+
+footer {
+    background-color: black; /* Hintergrund: schwarz */
+    color: white;            /* Weiße Schrift */
+    text-align: center;      /* Zentrierter Text */
+    padding: 20px;
+    margin-top: 50px;
+}
+
+
+footer a {
+    color: white;
+    text-decoration: underline;
 }
