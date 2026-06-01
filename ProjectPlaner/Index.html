@@ -5,20 +5,29 @@
         <meta name="description" content="Das ist die Startseite der Webanwendung">
         <meta name="author" content="Malte Wessel, Patrick Weßling">
         <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
     </head>
-<body>
+<body id="top">
     <header>
-        <h1 id="Top">Homepage</h1>
-        <picture>
+        <picture id="header">
             <source media="(min-width: 1920px)" srcset="header1920x200.png">
             <source media="(min-width: 1280px)" srcset="header1280x133.png">
             <source media="(min-width: 640px)" srcset="header640x67.png">
             <img src="header320x34.png" alt="Browser kann Bild nicht verwenden!">
+            <section id="login">
+            Login:
+            <form action="zielseite.html" method="post">
+                <input id="login-input" type="text" name="Name">
+                <input id="login-input" type="password" name="Passwort">
+                <input id="login-input" type="submit" value="Absenden">
+            </form>
+        </section>
         </picture>
+        
         <nav>
             <a href="Index.html">
                 <picture>
-                    <img src="startpageIcon.png" alt="Bild konnte nicht gefunden werden!">
+                    <img src="startseite.svg" alt="Bild konnte nicht gefunden werden!">
                 </picture>
             </a>
             <a href="ProjectOverview.html">Projekte</a>
@@ -53,15 +62,8 @@
             </tr>
         </table>
     </section>
+    <br>
     <footer>
-            <section>
-                Login:
-                <form action="zielseite.html" method="post">
-                    <input type="text" name="Name">
-                    <input type="password" name="Passwort">
-                    <input type="submit" value="Absenden">
-                </form>
-            </section>
             <nav>
                 <a href="register.html">Neu registrieren</a>
             </nav>
@@ -74,7 +76,7 @@
             <a href="Kontaktinformationen.html">Kontaktinformationen</a>
         </section>
             <nav>
-                <a href="#top">züruck nach oben</a>
+                <a id="top-button" href="#top">züruck nach oben</a>
             </nav>
         </footer>
 </body>
