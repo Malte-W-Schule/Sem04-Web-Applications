@@ -190,8 +190,52 @@ footer a {
 }
 
 /* ==========================================================================
-   Projektübersichtsseite 
+   Projektübersichtsseite  ProjectOverview.html
    ========================================================================== */
+
+.projectO-dropdown-container {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+}
+
+#projectO-hover {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.projectO-dropdown-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 10;
+}
+
+    .projectO-dropdown-list li {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+        .dropdown-list li:hover {
+            background-color: #f0f0f0;
+        }
+
+.projectO-dropdown-container:hover .projectO-dropdown-list {
+    display: block;
+}
+
+#projectO-hover:hover{
+    
+}
 
 #projektO-titel {
     font-size: 150%;

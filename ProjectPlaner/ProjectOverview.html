@@ -29,13 +29,15 @@
             <br>
             <h1>Projekte</h1>
 
-            <form>
-                <input name="eigenschaften" list="eigenschaften">
-                <datalist id="eigenschaften">
-                    <option value="Webanwendung">
-                    <option value="Lokale Anwendung">
-                </datalist>
-            </form>
+
+            <div class="projectO-dropdown-container">
+                <input type="text" placeholder="Eigenschaft wählen..." id="projectO-hover">
+
+                <ul class="projectO-dropdown-list">
+                    <li>Webanwendung</li>
+                    <li>Lokale Anwendung</li>
+                </ul>
+            </div>
 
             <ul>
                 <li>
@@ -50,7 +52,7 @@
                     <img src="ProjectIcon.png">
                     <span id="projektO-titel"> Projekt B: </span>
                     <span id="projektO-explain">
-                    Ein Projekt für eine Webanwendung B
+                        Ein Projekt für eine Webanwendung B
                     </span>
                     <a id="projectO-darkBG" href="ProjectB.html">zum Projekt</a>
                 </li>
