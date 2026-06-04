@@ -191,13 +191,19 @@ footer a {
    Projektübersichtsseite 
    ========================================================================== */
 
-#projektO-titel{
+#projektO-titel {
     font-size: 150%;
+    color: white;
+    background-color: #1B1C1D;
 }
 
 #projektO-explain {
     background-color: white;
     padding: 5px;
+}
+
+#projectO-darkBG {
+    background-color: #1B1C1D;
 }
 
 /* ==========================================================================
