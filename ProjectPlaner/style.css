@@ -91,6 +91,7 @@ footer {
     margin-top: 50px;
 }
 
+<<<<<<< HEAD
     footer a {
         color: white;
     }
@@ -182,3 +183,56 @@ footer {
     }
 }
 
+=======
+footer a {
+    color: white;
+}
+
+/* ==========================================================================
+   AUFGABE 4: Projektseite 
+   ========================================================================== */
+
+#content-menu {
+    position: absolute;
+    left: 0px;
+    width: 200px;
+
+    background-color: #3f3f3f;
+
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+
+    color: white;
+
+}
+
+#content-menu a {
+    color: white;
+
+    display: block;
+}
+
+#content-menu a:hover {
+    background-color: #87CEFA; 
+    color: black; 
+}
+
+#details {
+    position: relative;
+    left: 205px;
+
+    border-left: 3px solid #00BFFF;
+    padding-left: 10px;
+}
+
+#project-title {
+    font-size: 200%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    display: flex;
+    flex-direction: row;
+
+    gap: 10px;
+}
+>>>>>>> 9e8756f7929f78e9a91b83a0df347366e3ba471a
