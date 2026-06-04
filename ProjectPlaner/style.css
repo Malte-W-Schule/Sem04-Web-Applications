@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AUFGABE 1: Globale Styles (Gilt für alle Seiten)
+   Global
    ========================================================================== */
 
 body {
@@ -78,7 +78,7 @@ body {
     z-index: 1000; 
 }
 
-main {
+#main {
     padding-left: 20px;
     box-sizing: border-box;
 }
@@ -94,3 +94,91 @@ footer {
     footer a {
         color: white;
     }
+
+/* ==========================================================================
+   Index.html
+   ========================================================================== */
+
+#index-wilkommen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 100%;
+    background-color: #000;
+    color: white;
+    text-align: center;
+}
+
+#index-main {
+
+    display: flex;
+}
+
+#index-content-left {
+    flex: 1;
+    min-width: 0; 
+}
+    #index-content-left video {
+        width: 100%; 
+        max-width: 100%; 
+        height: auto;
+    }
+
+#index-content-right {
+    flex: 1;
+}
+
+
+#index-wilkommen {
+    position: relative; 
+    background-color: black;
+    height: 500px;
+}
+
+
+#index-animation {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    height: 30px;
+}
+
+    #index-animation span {
+        position: absolute;
+        left: 0;
+        top: 50%; 
+        transform: translateY(-50%);
+        width: 100%;
+        display: block;
+    }
+
+.zeile-1 {
+    animation: verschwinde 6s forwards;
+}
+
+.zeile-2 {
+    opacity: 0; 
+    animation: erscheine 6s forwards;
+    animation-delay: 3s; /
+}
+
+@keyframes verschwinde {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes erscheine {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
