@@ -239,12 +239,128 @@ footer a {
     padding-left: 10px;
 }
 
+
 #project-title {
+    position: sticky;
+    top: 5px;
+
     font-size: 200%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    color: white;
+    background-color: #00BFFF;
 
     display: flex;
     flex-direction: row;
 
     gap: 10px;
+
+    line-height: 1;
 }
+
+    #project-title h1 {
+        background-color: #1B1C1D;
+    }
+
+    #project-title p {
+        margin-left: auto;
+        align-items: center;
+
+        background-color: #1B1C1D;
+        padding: 25px 20px;
+    }
+
+#comment textarea{
+    background-color: transparent;
+
+    border: 1px solid #00BFFF;
+}
+
+    #comment textarea:focus {
+        background-color: white;
+    }
+
+
+/* ==========================================================================
+   AUFGABE 4: Projektseite 
+   ========================================================================== */
+
+#create-form {
+    margin-left: 10px;
+}
+
+#create-project-1 {
+    display: flex;
+    flex-direction: row;
+
+    gap: 10px;
+
+    background-color: #00BFFF;
+}
+
+#create-project-1 input[type="text"] {
+    background-color: transparent;
+
+    border: none;
+
+    font-size: 200%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    color: #1B1C1D;
+
+    line-height: 1;
+}
+
+#create-project-2 {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+#create-project-2 input[type="text"]{
+    background-color: transparent;
+
+    border: none;
+
+    width: 300px;
+
+    font-size: 150%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    color: #1B1C1D;
+}
+
+#create-project-2 input[type="date"] {
+    background-color: transparent;
+    border: none;
+}
+
+#create-project-2 input[name="Kurzbeschreibung"] {
+    width: auto;
+}
+
+#create-project-2 input[name="Langbeschreibung"] {
+    width: auto;
+}
+
+#date {
+    display: flex;
+    flex-direction: row;
+
+    gap: 5px;
+}
+
+#create-form input[type="submit"] {
+    margin-top: 20px;
+    
+    background-color: transparent;
+    border: none;
+}
+
+#create-form input[type="submit"]:hover {
+    background-color: #87CEFA;
+
+    border-radius: 5px;
+}
+

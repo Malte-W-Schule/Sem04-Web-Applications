@@ -1,66 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Homepage</title>
-        <meta name="description" content="Hier kann eine neues Projekt angelegt werden">
+<html lang="de">
+<head>
+        <title>Projekt Details</title>
+        <meta name="description" content="Hier wird das ausgewählte Projekt im Detail">
         <meta name="author" content="Malte Wessel, Patrick Weßling">
         <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
     </head>
-    <body>
-        <header>
-            <picture>
-                <source media="(min-width: 1920px)" srcset="header1920x200.png">
-                <source media="(min-width: 1280px)" srcset="header1280x133.png">
-                <source media="(min-width: 640px)" srcset="header640x67.png">
-                <img src="header320x34.png" alt="Browser kann Bild nicht verwenden!">
-            </picture>
-            <nav>
-                <a href="index.html">
-                    <picture>
-                        <img src="startpageIcon.png" alt="Bild konnte nicht gefunden werden!">
-                    </picture>
-                </a>
-                <a href="ProjectOverview.html">Projekte</a>
-                <a href="CreateProject.html">Neues Projekt</a>
-            </nav>
-        </header>
-        <section>
+<body id="top">
+    <header>
+        <picture id="header">
+            <source media="(min-width: 1920px)" srcset="header1920x200.png">
+            <source media="(min-width: 1280px)" srcset="header1280x133.png">
+            <source media="(min-width: 640px)" srcset="header640x67.png">
+            <img src="header320x34.png" alt="Browser kann Bild nicht verwenden!">
+            <section id="login">
+            Login:
+            <form action="zielseite.html" method="post">
+                <input id="login-input" type="text" name="Name">
+                <input id="login-input" type="password" name="Passwort">
+                <input id="login-input" type="submit" value="Absenden">
+            </form>
+        </section>
+        </picture>
+        
+        <nav id="nav-menu">
+            <a href="Index.html">
+                <picture>
+                    <img src="startseite.svg" alt="Bild konnte nicht gefunden werden!">
+                </picture>
+            </a>
+            <a href="ProjectOverview.html">Projekte</a>
+            <a href="CreateProject.html">Neues Projekt</a>
+        </nav>
+        <h1>Spannende Projekte <br> Motivieren Studierende</h1>
+    </header>
+        <section id="main">
             <h1 id="Top">Erstelle dein Projekt</h1>
-            <form>
-                <ul>
-                    <li>Titel: <input type="text" name="Titel"></li>
-                    <li>Startdatum: <input type="date" name="Startdatum"></li>  
-                    <li>Enddatum: <input type="date" name="Enddatum"></li>
-                    <li>Kurzbeschreibung: <input type="text" name="Kurzbeschreibung"></li>
-                    <li>Langbeschreibung: <input type="text" name="Langbeschreibung"></li>
-                    <li>Projekt Ziel 1: <input type="text" name="Ziel1"></li>
-                    <li>Projekt Ziel 2: <input type="text" name="Ziel2"></li>
-                    <li>Logo: <input type="file" name="Logo"></li>
-                </ul>
+            <form id="create-form">
+                <div id="create-project-1">
+                    <input id="create-logo" type="file" name="Logo" hidden>
+                    <label for="create-logo">
+                        <img src="startpageIcon.png" alt="Bild auswählen">
+                    </label>
+                    <input id="create-name" type="text" name="Titel" value="Projekt A">
+                    <input type="text" name="Projektleiter" value="Projektleiter">
+                </div>
+                <br>
+                <div id="create-project-2">
+                    <input type="text" name="Kurzbeschreibung" value="Kurzbeschreibung">
+                    <input type="text" name="Langbeschreibung" value="Langbeschreibung">
+                    <input type="text" name="Ziel1" value="Ziel1">
+                    <input type="text" name="Ziel2" value="Ziel2">
+                    <div id="date">
+                        Startdatum:<input type="date" name="Startdatum">
+                        Enddatum:<input type="date" name="Enddatum">
+                    </div>
+                </div>
+                <input id="login-input" type="submit" value="Projekt erstellen">
             </form>
         </section>
         <footer>
-            <section>
-                Login:
-                <form action="zielseite.html" method="post">
-                    <input type="text" name="Name">
-                    <input type="password" name="Passwort">
-                    <input type="submit" value="Absenden">
-                </form>
-            </section>
             <nav>
                 <a href="register.html">Neu registrieren</a>
             </nav>
             <br>
             <section>
-            <a href="Impressum.html">Impressum</a>
-            <a href="Datenschutzerklärung.html">Datenschutzerklärung</a>
-            <a href="Haftungsausschluss.html">Haftungsausschluss</a>
-            <a href="Copyright.html">Copyright</a>
-            <a href="Kontaktinformationen.html">Kontaktinformationen</a>
-        </section>
+                <a href="Impressum.html">Impressum</a>
+                <a href="Datenschutzerklärung.html">Datenschutzerklärung</a>
+                <a href="Haftungsausschluss.html">Haftungsausschluss</a>
+                <a href="Copyright.html">Copyright</a>
+                <a href="Kontaktinformationen.html">Kontaktinformationen</a>
+            </section>
             <nav>
-                <a href="#top">züruck nach oben</a>
+                <a id="top-button" href="#top">züruck nach oben</a>
             </nav>
         </footer>
     </body>
