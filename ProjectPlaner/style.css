@@ -183,28 +183,35 @@ footer {
     }
 }
 
-=======
 footer a {
     color: white;
 }
 
 /* ==========================================================================
-   AUFGABE 4: Projektseite 
+   Projektübersichtsseite 
    ========================================================================== */
 
+#projektO-titel{
+    font-size: 150%;
+}
+
+#projektO-explain {
+    background-color: white;
+    padding: 5px;
+}
+
+/* ==========================================================================
+   AUFGABE 4: Projektseite 
+   ========================================================================== */
 #content-menu {
     position: absolute;
     left: 0px;
     width: 200px;
-
     background-color: #3f3f3f;
-
     list-style: none;
     padding: 0;
     margin-left: 0;
-
     color: white;
-
 }
 
 #content-menu a {
@@ -235,4 +242,3 @@ footer a {
 
     gap: 10px;
 }
->>>>>>> 9e8756f7929f78e9a91b83a0df347366e3ba471a
