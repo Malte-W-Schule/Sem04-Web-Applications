@@ -1,5 +1,14 @@
 
-    // === Projekt_Artefakt Klasse ===
+// === Projekt_Artefakt Klasse ===
+
+/*
+Die Klasse "Project_Artifact" repräsentiert die Beziehung zwischen einem Projekt und einem Artefakt. Sie enthält Informationen über die Arbeitszeit, die für das Artefakt im Rahmen des Projekts aufgewendet wird.
+Eigenschaften:
+- projectId: Die ID des Projekts, mit dem das Artefakt verbunden ist.
+- artifact: Das Artefakt selbst, das mit dem Projekt verbunden ist.
+- arbeitszeit: Die Arbeitszeit, die für das Artefakt im Rahmen des Projekts aufgewendet wird.
+
+*/
 export class Project_Artifact {
 
     constructor(projectId, artifact, arbeitszeit) {
