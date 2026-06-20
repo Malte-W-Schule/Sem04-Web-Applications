@@ -123,3 +123,28 @@ for (let i = 0; i < sortierteProjekteNachZeit.length; i++) {
 
     console.log(`${aktuellesProjekt.Titel} - Gesamte Arbeitszeit: ${zeit} Stunden ${aktuellesProjekt.StartDate}`);
 }
+
+
+// ===== Json Fetch =====
+
+// Json Projects
+fetch('../Json/projects.json').then(                                // Datei fetchapi.json wurde gefunden 
+    function (response) {                                           // dann gibt Funktion den Inhalt von response als json zurück
+        console.log("Get response as json-Promise");
+        return response.json();
+    }
+).then(                                                             // die Datei konnte erfolgreich in json umgewandelt werden
+    function (jsonData) {  // rufe Funktion jsonData auf
+        console.log("recieved data: " + jsonData);
+
+
+        // objekte erstellen
+        const projectInstances = jsonData.map(item => {
+            return new Project(item.id, item.name, item.description, item.logo, item.startDate);
+        });
+        console.log(projectInstances);
+
+    }
+).catch(function (err) {
+    console.log("Opps, Something went wrong!", err);
+})

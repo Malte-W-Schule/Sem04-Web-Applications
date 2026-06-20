@@ -95,3 +95,97 @@ function updatePageTexts() {
         element.textContent = t(key); // Nutzt die Übersetzungsfunktion von oben
     });
 }
+
+
+
+
+//    =======================
+
+
+
+// Json Artefacts
+fetch('https://scl.fh-bielefeld.de/WBA/artefacts.json').then(        // Datei fetchapi.json wurde gefunden 
+    function (response) {                                           // dann gibt Funktion den Inhalt von response als json zurück
+        console.log("Get response as json-Promise");
+        return response.json();
+    }
+).then(                                                             // die Datei konnte erfolgreich in json umgewandelt werden
+    function (jsonData) {  // rufe Funktion jsonData auf
+        console.log("recieved data: " + jsonData);
+
+
+        // objekte erstellen
+        const projectInstances = jsonData.map(item => {
+            return new Project(item.id, item.name, item.description, item.logo, item.startDate);
+        });
+
+    }
+).catch(function (err) {
+    console.log("Opps, Something went wrong!", err);
+})
+
+// Json task
+fetch('https://scl.fh-bielefeld.de/WBA/artefacts.json').then(        // Datei fetchapi.json wurde gefunden 
+    function (response) {                                           // dann gibt Funktion den Inhalt von response als json zurück
+        console.log("Get response as json-Promise");
+        return response.json();
+    }
+).then(                                                             // die Datei konnte erfolgreich in json umgewandelt werden
+    function (jsonData) {  // rufe Funktion jsonData auf
+        console.log("recieved data: " + jsonData);
+
+
+        // objekte erstellen
+        const projectInstances = jsonData.map(item => {
+            return new Project(item.id, item.name, item.description, item.logo, item.startDate);
+        });
+
+    }
+).catch(function (err) {
+    console.log("Opps, Something went wrong!", err);
+})
+
+
+
+
+const data = [
+    { "id": 1, "name": "Konzeption - P1", "shortdesc": "Konzeption des Projektmanagers", "project": 1 },
+    { "id": 2, "name": "Implementierung - P1", "shortdesc": "Implementierung des Projektmanagers", "project": 1 },
+    { "id": 3, "name": "Wartung - P1", "shortdesc": "Wartung des Projektmanagers", "project": 1 },
+    { "id": 4, "name": "Konzeption - P2", "shortdesc": "Konzeption des Frühwarnsystems", "project": 2 },
+    { "id": 5, "name": "Implementierung - P2", "shortdesc": "Implementierung des Frühwarnsystems", "project": 2 },
+    { "id": 6, "name": "Wartung - P2", "shortdesc": "Wartung des Frühwarnsystems", "project": 2 },
+    { "id": 7, "name": "Planung :|", "shortdesc": "Planung der Party", "project": 3 },
+    { "id": 8, "name": "Durchführung :)", "shortdesc": "Durchführung der Party", "project": 3 },
+    { "id": 9, "name": "Aufräumen :(", "shortdesc": "Das Aufträumen danach", "project": 3 }
+];
+
+// Instanziierung: Aus rohen Objekten echte Klassen-Instanzen machen
+const taskInstances = data.map(item => {
+    return new Task(item.id, item.name, item.shortdesc, item.project);
+});
+
+
+
+function postData(url, data) {
+    // Default options are marked with *
+    return fetch(url, {
+        body: JSON.stringify(data),
+        cache: 'no-cache‘,  
+credentials: 'same-origin‘, 
+// url zu der die Daten gesendet werden sollen
+// welcher 'Content-Type‘ soll mitgeliefert werden-> 
+// mitgesendete Daten in JSON-String umwandeln
+// *default, no-cache, (reload, force-cache, only-if-cached)
+// (include, *omit )-> Anfrage geht an den gleichen Server
+headers: {
+            'user-agent': 'Mozilla/4.0 MDN Example',
+            'content-type': 'application/json'
+        },
+        method: 'POST‘,  
+// Default: *GET, (PUT, DELETE, etc.) 
+mode: 'cors‘,  
+        // no-cors, *same-origin
+    })
+        .then(response => response.json()) // parst response zu JSON-Objekt
+}
