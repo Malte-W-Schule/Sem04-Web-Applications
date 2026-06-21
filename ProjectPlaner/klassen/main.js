@@ -1,6 +1,9 @@
 
 
 let url = 'https://scl.fh-bielefeld.de/WBA/projectsAPI';
+let workingUlr = "../JSON/jsonAPI200Accept.json";
+
+//url = workingUlr;                                                                                                      /// <======== einkommentieren für 200 accept
 
 // == local cache holen und erneut versuchen ==
 const queue = JSON.parse(localStorage.getItem('offlineQueue')) || [];
@@ -123,14 +126,14 @@ let data = [
 
 function postData(url, data) {
     return fetch(url, {
-        body: JSON.stringify(data),
+        body: JSON.stringify(data),                                                                                          /// <======== body unnöig/blöd wenn method get
         cache: 'no-cache',
         credentials: 'same-origin',
         headers: {
             'user-agent': 'Mozilla/4.0 MDN Example',
             'content-type': 'application/json'
         },
-        method: 'POST',
+        method: 'POST',                                                                                                     /// <======== zu post für 200 accept
         mode: 'no-cors',
     }).then(response => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
