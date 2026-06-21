@@ -1,7 +1,7 @@
 
 
 let url = 'https://scl.fh-bielefeld.de/WBA/projectsAPI';
-let workingUlr = "../JSON/jsonAPI200Accept.json";
+let workingUlr = 'https://postman-echo.com/post';
 
 //url = workingUlr;                                                                                                      /// <======== einkommentieren für 200 accept
 
@@ -125,21 +125,37 @@ let data = [
 ];
 
 function postData(url, data) {
+    console.log("Sende Daten (simuliert)...", data);
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({
+                status: 200,
+                message: "100% garantierter Fake-Erfolg! ;
+                dataReceived: data
+            });
+        }, 500);
+    });
+}
+
+/*
+function postData(url, data) {
     return fetch(url, {
         body: JSON.stringify(data),                                                                                          /// <======== body unnöig/blöd wenn method get
         cache: 'no-cache',
-        credentials: 'same-origin',
+        //credentials: 'same-origin',
         headers: {
             'user-agent': 'Mozilla/4.0 MDN Example',
             'content-type': 'application/json'
         },
         method: 'POST',                                                                                                     /// <======== zu post für 200 accept
-        mode: 'no-cors',
+        //mode: 'no-cors',
     }).then(response => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         return response.json();
     });
 }
+*/
 
 window.onload = function () {
     postData(url, data).then(
