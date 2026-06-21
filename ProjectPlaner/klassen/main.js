@@ -131,7 +131,7 @@ function postData(url, data) {
         setTimeout(() => {
             resolve({
                 status: 200,
-                message: "100% garantierter Fake-Erfolg! ;
+                message: "100% garantierter Fake-Erfolg! ,
                 dataReceived: data
             });
         }, 500);
