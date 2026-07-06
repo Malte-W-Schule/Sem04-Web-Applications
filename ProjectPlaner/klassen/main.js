@@ -35,7 +35,7 @@ if (queue.length > 0) {
     }
 }
 // == local storage end ==
-
+*/
 // main
 import { projectTimeCalculator } from '../services/ProjectTimeCalculator.js';
 import { sortProject } from '../services/SortProject.js';
@@ -44,7 +44,7 @@ import { Artifact } from './Artifact.js';
 import { TaskArea } from './TaskArea.js';
 import { Project_TaskArea } from './ProjectTaskArea.js';
 import { Project_Artifact } from './ProjectArtifact.js';
-
+/*
 // === Json Fetch ===
 // === Listen ===
 let projectMap = new Map();
@@ -199,30 +199,59 @@ window.onload = function () {
 }
 */
 
-// 1. Die Ziel-URL definieren
-const url = 'http://localhost:8080/SmartDataLyser/smartdatalyser/statistic/minmaxspan?smartdataurl=http%3A%2F%2Flocalhost%3A8080%2FSmartData&collection=artifact&storage=public&column=arbeitszeit';
+// ===============================================================================================================================
 
-// 2. Die GET-Anfrage mit fetch senden
-fetch(url)
-    .then(response => {
-        // Prüfen, ob der Server erfolgreich geantwortet hat (Status 200-299)
-        if (!response.ok) {
-            throw new Error(`HTTP-Fehler! Status: ${response.status}`);
-        }
-        // Die Antwort als JSON parsen
-        return response.json();
+
+// 1. Die Ziel-URL definieren
+const statsUrl = 'http://localhost:8080/SmartDataLyser/smartdatalyser/statistic/minmaxspan?smartdataurl=http%3A%2F%2Flocalhost%3A8080%2FSmartData&collection=artifact&storage=public&column=arbeitszeit';
+const projectUrl = 'http://localhost:8080/SmartData/smartdata/records/project';
+
+var min = 0;
+var max = 0;
+var span = 0;
+
+let projectMap = new Map();
+
+Promise.all([
+    fetch(statsUrl).then(res => {
+        if (!res.ok) throw new Error(`Stats-Fehler: ${res.status}`);
+        return res.json();
+    }),
+    fetch(projectUrl).then(res => {
+        if (!res.ok) throw new Error(`Projects-Fehler: ${res.status}`);
+        return res.json();
     })
-    .then(data => {
-        // 3. Ergebnisse übersichtlich in der Konsole ausgeben
-        console.log('--- API Ergebnis ---');
-        console.log('Min:', data.min);
-        console.log('Max:', data.max);
-        console.log('Span:', data.span);
-        
-        // Optional: Das gesamte Objekt anzeigen, falls die Keys anders heißen
-        // console.log('Komplettes Datenobjekt:', data);
+])
+    // wen nbeides fertig ist, dann erst ausführen
+    .then(([statsData, projectJson]) => {
+
+        // Statistiken zuweisen
+        min = statsData.min;
+        max = statsData.max;
+        span = statsData.span;
+        console.log('--- API Ergebnis Statistiken eingetroffen ---', { min, max, span });
+
+        // Projekte  verarbeiten
+        console.log("recieved project data: ", projectJson);
+        projectJson.records.forEach(item => {
+            //date ,
+            const projectDate = item.start_date ? new Date(item.start_date) : new Date("2024-07-01");
+
+            const newProject = new Project(
+                item.titel ?? "Unbenanntes Projekt",
+                item.kurzbeschreibung ?? "Keine Beschreibung vorhanden.",
+                item.logo_path ?? "kein logo path vorhanden",
+                projectDate,
+                min,
+                max,
+                span,
+                item.arbeitszeit ?? 0
+            );
+            projectMap.set(item.id, newProject);
+        });
+
+        console.log("Project Map erfolgreich befüllt:", projectMap);
     })
-    .catch(error => {
-        // Fehlerbehandlung, falls der Server offline ist oder ein Fehler auftritt
-        console.error('Fehler beim Abrufen der Daten:', error);
+    .catch(err => {
+        console.error("Etwas ist beim Laden fehlgeschlagen:", err.message);
     });
