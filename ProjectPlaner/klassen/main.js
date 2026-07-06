@@ -1,9 +1,11 @@
 
-
+/*
 let url = 'https://scl.fh-bielefeld.de/WBA/projectsAPI';
 let workingUlr = 'https://postman-echo.com/post';
 
 //url = workingUlr;                                                                                                      /// <======== einkommentieren für 200 accept
+
+let simulate = false;
 
 // == local cache holen und erneut versuchen ==
 const queue = JSON.parse(localStorage.getItem('offlineQueue')) || [];
@@ -12,14 +14,25 @@ if (queue.length > 0) {
     localStorage.removeItem('offlineQueue');
 
     // elemente durchlaufen, erneut "uploaden"
-    queue.forEach(item => {
-        postData(url, item).catch(err => {
-            console.log("Queued item failed (CORS/Offline). Re-adding to queue.", err);
-            const currentQueue = JSON.parse(localStorage.getItem('offlineQueue')) || [];
-            currentQueue.push(item);
-            localStorage.setItem('offlineQueue', JSON.stringify(currentQueue));
+    if (simulate) {
+        queue.forEach(item => {
+            postData_simulate(url, item).catch(err => {
+                console.log("Queued item failed (CORS/Offline). Re-adding to queue.", err);
+                const currentQueue = JSON.parse(localStorage.getItem('offlineQueue')) || [];
+                currentQueue.push(item);
+                localStorage.setItem('offlineQueue', JSON.stringify(currentQueue));
+            });
         });
-    });
+    } else {
+        queue.forEach(item => {
+            postData(url, item).catch(err => {
+                console.log("Queued item failed (CORS/Offline). Re-adding to queue.", err);
+                const currentQueue = JSON.parse(localStorage.getItem('offlineQueue')) || [];
+                currentQueue.push(item);
+                localStorage.setItem('offlineQueue', JSON.stringify(currentQueue));
+            });
+        });
+    }
 }
 // == local storage end ==
 
@@ -125,49 +138,91 @@ let data = [
 ];
 
 function postData(url, data) {
+    return fetch(url, {
+        body: JSON.stringify(data),                                                                                          /// <======== body unnöig/blöd wenn method get
+        cache: 'no-cache',
+        //credentials: 'same-origin',
+        headers: {
+        },
+        method: 'POST',                                                                                                     /// <======== zu post für 200 accept
+        mode: 'cors',
+    }).then(response => {
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return response.json();
+    });
+}
+
+function postData_simulate(url, data) {
     console.log("Sende Daten (simuliert)...", data);
 
+    // zurückgeben eines Promise Objektes simulieren, 
     return new Promise((resolve) => {
+        // Timeout um Ladezeiten zu simulieren
         setTimeout(() => {
             resolve({
                 status: 200,
-                message: "100% garantierter Fake-Erfolg! ,
+                message: "Queue wird geleert.",
                 dataReceived: data
             });
         }, 500);
     });
 }
 
-/*
-function postData(url, data) {
-    return fetch(url, {
-        body: JSON.stringify(data),                                                                                          /// <======== body unnöig/blöd wenn method get
-        cache: 'no-cache',
-        //credentials: 'same-origin',
-        headers: {
-            'user-agent': 'Mozilla/4.0 MDN Example',
-            'content-type': 'application/json'
-        },
-        method: 'POST',                                                                                                     /// <======== zu post für 200 accept
-        //mode: 'no-cors',
-    }).then(response => {
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        return response.json();
-    });
+window.onload = function () {
+    if (simulate) {
+        postData_simulate(url, data).then(
+            function (responseData) {
+                console.log(responseData);
+            }
+        ).catch(error => {
+            console.log("Daten nicht gesendet. Speichere im LocalStorage...", error.message);
+
+            const offlineQueue = JSON.parse(window.localStorage.getItem('offlineQueue')) || [];
+            offlineQueue.push(data);
+            console.log("Current Offline Queue:", offlineQueue);
+            window.localStorage.setItem('offlineQueue', JSON.stringify(offlineQueue));
+        });
+    } else {
+        postData(url, data).then(
+            function (responseData) {
+                console.log(responseData);
+            }
+        ).catch(error => {
+            console.log("Daten nicht gesendet. Speichere im LocalStorage...", error.message);
+
+            const offlineQueue = JSON.parse(window.localStorage.getItem('offlineQueue')) || [];
+            offlineQueue.push(data);
+            console.log("Current Offline Queue:", offlineQueue);
+            window.localStorage.setItem('offlineQueue', JSON.stringify(offlineQueue));
+        });
+    }
 }
 */
 
-window.onload = function () {
-    postData(url, data).then(
-        function (responseData) {
-            console.log(responseData);
-        }
-    ).catch(error => {
-        console.log("Daten nicht gesendet. Speichere im LocalStorage...", error.message);
+// 1. Die Ziel-URL definieren
+const url = 'http://localhost:8080/SmartDataLyser/smartdatalyser/statistic/minmaxspan?smartdataurl=http%3A%2F%2Flocalhost%3A8080%2FSmartData&collection=artifact&storage=public&column=arbeitszeit';
 
-        const offlineQueue = JSON.parse(window.localStorage.getItem('offlineQueue')) || [];
-        offlineQueue.push(data);
-        console.log("Current Offline Queue:", offlineQueue);
-        window.localStorage.setItem('offlineQueue', JSON.stringify(offlineQueue));
+// 2. Die GET-Anfrage mit fetch senden
+fetch(url)
+    .then(response => {
+        // Prüfen, ob der Server erfolgreich geantwortet hat (Status 200-299)
+        if (!response.ok) {
+            throw new Error(`HTTP-Fehler! Status: ${response.status}`);
+        }
+        // Die Antwort als JSON parsen
+        return response.json();
+    })
+    .then(data => {
+        // 3. Ergebnisse übersichtlich in der Konsole ausgeben
+        console.log('--- API Ergebnis ---');
+        console.log('Min:', data.min);
+        console.log('Max:', data.max);
+        console.log('Span:', data.span);
+        
+        // Optional: Das gesamte Objekt anzeigen, falls die Keys anders heißen
+        // console.log('Komplettes Datenobjekt:', data);
+    })
+    .catch(error => {
+        // Fehlerbehandlung, falls der Server offline ist oder ein Fehler auftritt
+        console.error('Fehler beim Abrufen der Daten:', error);
     });
-}
