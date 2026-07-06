@@ -4,7 +4,7 @@
 export class Project {
 
     // === Constructor ===
-    constructor(titel, kurzbeschreibung, logoPath, startDate) {
+    constructor(titel, kurzbeschreibung, logoPath, startDate, min, max, span, arbeitszeit) {
 
         this.Titel = titel;
 
@@ -16,6 +16,14 @@ export class Project {
         this.LogoPath = logoPath;
 
         this.StartDate = new Date(startDate);
+
+        this.Min = min;
+
+        this.Max = max;
+
+        this.Span = span;
+
+        this.Arbeitszeit = arbeitszeit;
 
     }
 
@@ -60,6 +68,39 @@ export class Project {
     set StartDate(value) {
         this._startDate = new Date(value);
     }
+    // === Min ===
+    set Min(value) {
+        this._min = value;
+    }
 
+    get Min() {
+        return this._min;
+    }
+
+    // === Max ===
+    set Max(value) {
+        this._max = value;
+    }
+
+
+    get Max() {
+        return this._max;
+    }
+
+    // === Span ===
+    set Span(value) {
+        this._span = value;
+    }
+    get Span() {
+        return this._span;
+    }
+    // === Arbeitszeit ===
+    set Arbeitszeit(value) {
+        this._arbeitszeit = value;
+    }
+
+    get Arbeitszeit() {
+        return this._arbeitszeit;
+    }
 
 }
