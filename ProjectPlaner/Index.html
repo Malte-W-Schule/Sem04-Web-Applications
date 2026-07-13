@@ -25,13 +25,13 @@
         </picture>
 
         <nav id="nav-menu">
-            <a href="Index.html">
+            <a href="index.html">
                 <picture>
                     <img src="startseite.svg" alt="Bild konnte nicht gefunden werden!">
                 </picture>
             </a>
-            <a href="ProjectOverview.html">Projekte</a>
-            <a href="CreateProject.html">Neues Projekt</a>
+            <a id="projects" href="ProjectOverview.html">Projects</a>
+            <a id="createProjects" href="CreateProject.html">New Project</a>
         </nav>
 
     </header>
@@ -42,14 +42,10 @@
         <h1>Projekt-Zeitrechner aktiv</h1>
         <p>Öffne die Konsole (F12 -> Console), um das Ergebnis zu sehen!</p>
 
-        <script type="module" src="klassen/main.js"></script>
-
-
-
         <section>
             <h1 id="index-animation">
-                <span class="zeile-1">Spannende Projekte</span>
-                <span class="zeile-2">Motivieren Studierende</span>
+                <span id="animation_1" class="zeile-1">Spannende Projekte</span>
+                <span id="animation_2" class="zeile-2">Motivieren Studierende</span>
             </h1>
         </section>
 
@@ -89,20 +85,22 @@
     <br>
     <footer>
             <nav>
-                <a href="register.html">Neu registrieren</a>
+                <a id="register" href="register.html">Neu registrieren</a>
             </nav>
             <br>
             <section>
-            <a href="Impressum.html">Impressum</a>
-            <a href="Datenschutzerklärung.html">Datenschutzerklärung</a>
-            <a href="Haftungsausschluss.html">Haftungsausschluss</a>
-            <a href="Copyright.html">Copyright</a>
-            <a href="Kontaktinformationen.html">Kontaktinformationen</a>
+            <a id="impressum" href="Impressum.html">Impressum</a>
+            <a id="privacy_policy" href="Datenschutzerklärung.html">Datenschutzerklärung</a>
+            <a id="disclaimer" href="Haftungsausschluss.html">Haftungsausschluss</a>
+            <a id="copyright" href="Copyright.html">Copyright</a>
+            <a id="contact_info" href="Kontaktinformationen.html">Kontaktinformationen</a>
         </section>
             <nav>
                 <a id="top-button" href="#top">züruck nach oben</a>
             </nav>
         </footer>
+
+        <script type="module" src="klassen/main.js"></script>
 </body>
 
 </html>

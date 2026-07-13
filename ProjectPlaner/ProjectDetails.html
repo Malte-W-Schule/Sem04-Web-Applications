@@ -8,21 +8,31 @@
     </head>
 <body>
     <header>
-        <picture>
+        <picture id="header">
             <source media="(min-width: 1920px)" srcset="header1920x200.png">
             <source media="(min-width: 1280px)" srcset="header1280x133.png">
             <source media="(min-width: 640px)" srcset="header640x67.png">
             <img src="header320x34.png" alt="Browser kann Bild nicht verwenden!">
+            <section id="login">
+                Login:
+                <form action="zielseite.html" method="post">
+                    <input id="login-input" type="text" name="Name">
+                    <input id="login-input" type="password" name="Passwort">
+                    <input id="login-input" type="submit" value="Absenden">
+                </form>
+            </section>
         </picture>
-        <nav>
+
+        <nav id="nav-menu">
             <a href="index.html">
                 <picture>
-                    <img src="startpageIcon.png" alt="Bild konnte nicht gefunden werden!">
+                    <img src="startseite.svg" alt="Bild konnte nicht gefunden werden!">
                 </picture>
             </a>
-            <a href="ProjectOverview.html">Projekte</a>
-            <a href="CreateProject.html">Neues Projekt</a>
+            <a id="projects" href="ProjectOverview.html">Projects</a>
+            <a id="createProjects" href="CreateProject.html">New Project</a>
         </nav>
+
     </header>
 
 
@@ -74,29 +84,23 @@
     </div>
 
     <footer>
-            <section>
-                Login:
-                <form action="zielseite.html" method="post">
-                    <input type="text" name="Name">
-                    <input type="password" name="Passwort">
-                    <input type="submit" value="Absenden">
-                </form>
-            </section>
             <nav>
-                <a href="register.html">Neu registrieren</a>
+                <a id="register" href="register.html">Neu registrieren</a>
             </nav>
             <br>
             <section>
-            <a href="Impressum.html">Impressum</a>
-            <a href="Datenschutzerklärung.html">Datenschutzerklärung</a>
-            <a href="Haftungsausschluss.html">Haftungsausschluss</a>
-            <a href="Copyright.html">Copyright</a>
-            <a href="Kontaktinformationen.html">Kontaktinformationen</a>
+            <a id="impressum" href="Impressum.html">Impressum</a>
+            <a id="privacy_policy" href="Datenschutzerklärung.html">Datenschutzerklärung</a>
+            <a id="disclaimer" href="Haftungsausschluss.html">Haftungsausschluss</a>
+            <a id="copyright" href="Copyright.html">Copyright</a>
+            <a id="contact_info" href="Kontaktinformationen.html">Kontaktinformationen</a>
         </section>
             <nav>
-                <a href="#top">züruck nach oben</a>
+                <a id="top-button" href="#top">züruck nach oben</a>
             </nav>
         </footer>
+
+        <script type="module" src="klassen/main.js"></script>
 </body>
 
 </html>
